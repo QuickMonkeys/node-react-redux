@@ -1,0 +1,50 @@
+.card {
+    border: 1px solid #FFF;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 6px;
+    color: #FFF;
+}
+
+.card span a {
+    color: white;
+}
+
+.card-graph {
+    background-color: #55C9A6;
+}
+
+.card-list {
+    background-color: #D67F6B;
+}
+
+.card-container {
+    background-color: #89949B;
+}
+
+
+.marked {
+    background-color: #EBA068;
+}
+
+.card hr {
+    margin: 3px 0;
+}
+
+.title {
+    font-family: verdana;
+    font-size: 16px;
+    font-weight: bold;
+    font-color: #fff;
+}
+
+.cccccard:hover {
+    -webkit-box-shadow: 7px 7px 22px 0px rgba(128,124,128,1);
+    -moz-box-shadow: 7px 7px 22px 0px rgba(128,124,128,1);
+    box-shadow: 7px 7px 22px 0px rgba(128,124,128,1);
+    cursor: pointer;
+}
+
+.table-row{
+    cursor:pointer;
+}
