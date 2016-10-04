@@ -1,5 +1,5 @@
 .card {
-    border: 1px solid #FFF;
+    border: 2px solid #FFF;
     border-radius: 8px;
     padding: 8px;
     margin: 6px;
@@ -38,13 +38,12 @@
     font-color: #fff;
 }
 
-.cccccard:hover {
-    -webkit-box-shadow: 7px 7px 22px 0px rgba(128,124,128,1);
-    -moz-box-shadow: 7px 7px 22px 0px rgba(128,124,128,1);
-    box-shadow: 7px 7px 22px 0px rgba(128,124,128,1);
-    cursor: pointer;
+.table-row {
+    
 }
 
-.table-row{
+.table-row:hover {
     cursor:pointer;
+    background-color: #E0E0E0;
 }
+    
