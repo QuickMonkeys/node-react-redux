@@ -13,4 +13,3 @@ export function getAll(action) {
 export function mark(action) {
     return { type: 'MARK', value: action.value };
 }
-

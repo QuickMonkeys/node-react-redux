@@ -16,7 +16,6 @@ const mapDispatchToProps = (dispatch) => {
     return { actions: bindActionCreators (actions, dispatch)  }
 }
 
-
 const SearchContainer = connect(mapStateToProps, mapDispatchToProps)(Search);
 
 export default SearchContainer;

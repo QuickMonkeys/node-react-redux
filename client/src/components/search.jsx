@@ -8,15 +8,16 @@ export default class Search extends React.Component {
 
     render() {
         let {data, filter, marked} = this.props;
+        let {actions} = this.props;
         const filtered = filter == undefined
                         ? data.length
-                        : data.filter((f) => f.language.toUpperCase().indexOf(filter) != -1).length
+                        : data.filter((f) => f.language.toUpperCase().indexOf(filter) != -1).length;
         return (
             <div style={{margin: '4px'}}>
                 <input 
                     type="text" 
                     placeholder="Search for a programming language..."
-                    onChange={(e) => this.props.actions.filter({value: e.target.value})}
+                    onChange={(e) => actions.filter({value: e.target.value})}
                     className="form-control"
                 />
                 <div>
@@ -24,7 +25,7 @@ export default class Search extends React.Component {
                         Total: {filtered} of {data.length} - {marked.length} selected.&nbsp;
                         <a href="javascript:void(0)" 
                             style={{display: marked.length == 0 ? 'none' : 'inline'}}
-                            onClick={() => this.props.actions.clearMarked()}>
+                            onClick={() => actions.clearMarked()}>
                             Clear all selected
                         </a>
                     </span>

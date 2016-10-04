@@ -16,35 +16,16 @@ export default class BarChart extends React.Component {
                 {
                     data: result.map((m) => m.rating.toFixed(2)),
                     backgroundColor: [
-                        "#6F1D1B",
-                        "#BB9457",
-                        "#432818",
-                        "#99582A",
-                        "#FFE6A7",
-                        "#2C1320",
-                        "#5F4B66",
-                        "#A7ADC6",
-                        "#8797AF",
-                        "#56667A",
-                        "#6F1D1B",
-                        "#BB9457",
-                        "#432818",
-                        "#99582A",
-                        "#FFE6A7",
-                        "#2C1320",
-                        "#5F4B66",
-                        "#A7ADC6",
-                        "#8797AF",
-                        "#56667A"                        
+                        "#6F1D1B", "#BB9457", "#432818", "#99582A", "#FFE6A7", "#2C1320",
+                        "#5F4B66", "#A7ADC6", "#8797AF", "#56667A", "#6F1D1B", "#BB9457",
+                        "#432818", "#99582A", "#FFE6A7", "#2C1320", "#5F4B66", "#A7ADC6",
+                        "#8797AF", "#56667A"
                     ]
                 }]
         };
         
         Chart.defaults.global.legend.display = false;
-        let myChart = new Chart(ctx, {
-            type: 'bar',
-            data: dataD
-        });
+        let myChart = new Chart(ctx, { type: 'bar', data: dataD });
     }
     
     componentDidUpdate(prevProps, prevState){
@@ -57,7 +38,6 @@ export default class BarChart extends React.Component {
         marked.length == 0
             ? $('#barContainer').append('<div id="barContent" width="100%" height="55">No programming language selected.</div>')
             : this.createChart(data, marked);
-
     }
     
     render() {

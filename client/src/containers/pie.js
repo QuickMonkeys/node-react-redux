@@ -1,4 +1,3 @@
-import { bindActionCreators } from 'redux'
 import { connect }  from 'react-redux';
 
 import PieChart from '../components/chart/pie.jsx';

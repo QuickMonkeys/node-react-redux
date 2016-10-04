@@ -15,25 +15,13 @@ export default class PieChart extends React.Component {
             datasets: [
                 {
                     data: data.map((m) => m.rating.toFixed(2)),
-                    backgroundColor: [
-                        "#6F1D1B",
-                        "#BB9457",
-                        "#432818",
-                        "#99582A",
-                        "#FFE6A7"
-                    ]
+                    backgroundColor: ["#6F1D1B", "#BB9457", "#432818", "#99582A", "#FFE6A7"]
                 }]
         };
         
         Chart.defaults.global.legend.display = false;
-        let myChart = new Chart(ctx, {
-            type: 'pie',
-            data: dataD,
-            options: { borderColor: '#55C9A6' }
-        });
-
+        let myChart = new Chart(ctx, { type: 'pie', data: dataD, options: { borderColor: '#55C9A6' } });
     }
-    
 
     render() {
         return (<div className="col-md-6">
