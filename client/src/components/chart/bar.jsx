@@ -10,7 +10,7 @@ export default class BarChart extends React.Component {
         
         let result = data.filter((m) => marked.indexOf(m.position) != -1);
         
-        let dataD = {
+        let dataChart = {
             labels: result.map((m) => `${m.position} - ${m.language}`),
             datasets: [
                 {
@@ -25,7 +25,7 @@ export default class BarChart extends React.Component {
         };
         
         Chart.defaults.global.legend.display = false;
-        let myChart = new Chart(ctx, { type: 'bar', data: dataD });
+        let bar = new Chart(ctx, { type: 'bar', data: dataChart });
     }
     
     componentDidUpdate(prevProps, prevState){

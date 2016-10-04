@@ -16,13 +16,13 @@ export default class List extends React.Component {
     componentDidMount() {
         console.log('List - componentDidMount');
 
-        // An ajax can be used here to access the data, by a rest API service
+        // An ajax call can be used here to access the data
         const languages = require("json!../data/languages.json");
-        this.props.actions.populate({ type: "POPULATE", value: languages });
+        this.props.actions.populate({ value: languages });
     }
     
+    // This function generates the rows of the languages
     tableRows(filtered, marked) {
-        
         var rowClass = (p) => marked.indexOf(p) == -1 ? "table-row" :  "table-row marked";
         const result = filtered.map((item) => <tr className={rowClass(item.position)} data-position={item.position} key={item.position}>
                                                 <td>{item.position}</td><td>{item.language}</td><td>{item.rating.toFixed(2)}</td>

@@ -5,7 +5,7 @@ const initialState = {
     filter: undefined
 }
 
-const languageReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
     switch (action.type) {
 
         case "POPULATE":
@@ -13,7 +13,7 @@ const languageReducer = (state = initialState, action) => {
             {
                 languages: action.value, 
                 top5: action.value.filter((f) => f.position <= 5),
-                marked: [1,2,3,4]
+                marked: [1,2,3,4] // Just a sample to start the application
             });
 
         case "FILTER":
@@ -36,5 +36,3 @@ const languageReducer = (state = initialState, action) => {
             return state;
     }
 }
-
-export default languageReducer;

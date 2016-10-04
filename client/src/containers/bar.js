@@ -9,6 +9,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-const BarChartContainer = connect(mapStateToProps)(BarChart);
-
-export default BarChartContainer;
+export default connect(mapStateToProps)(BarChart);

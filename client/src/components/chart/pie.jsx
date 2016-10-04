@@ -10,7 +10,7 @@ export default class PieChart extends React.Component {
         
         let ctx = document.getElementById("pieContent");
         
-        let dataD = {
+        let dataChart = {
             labels: data.map((m) => `${m.position} - ${m.language}`),
             datasets: [
                 {
@@ -20,7 +20,7 @@ export default class PieChart extends React.Component {
         };
         
         Chart.defaults.global.legend.display = false;
-        let myChart = new Chart(ctx, { type: 'pie', data: dataD, options: { borderColor: '#55C9A6' } });
+        let pie = new Chart(ctx, { type: 'pie', data: dataChart, options: { borderColor: '#55C9A6' } });
     }
 
     render() {

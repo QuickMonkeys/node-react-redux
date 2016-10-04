@@ -9,6 +9,7 @@ import BarChartContainer from './bar.js'
 import SearchContainer from './search.js'
 import ListContainer from './list.js';
 
+// The store is created to be used by all react components.
 const store = createStore(languageReducer);
 
 const Dashboard = () => <div className="card card-container">
@@ -20,8 +21,4 @@ const Dashboard = () => <div className="card card-container">
                             </div>
                         </div>
 
-const App = () => <Provider store={store}>
-                    <Dashboard />
-                  </Provider>;
-
-export default App;
+export default () => <Provider store={store}><Dashboard /></Provider>;

@@ -4,6 +4,7 @@ import { connect }  from 'react-redux';
 import * as actions from '../actions/search.js';
 import Search from '../components/search.jsx';
 
+// Define the parts of state that will be exposed in the component
 const mapStateToProps = (state, ownProps) => {
     return {
         data: state.languages,
@@ -12,10 +13,10 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
+// Define the actions that will be used by the component
 const mapDispatchToProps = (dispatch) => {
     return { actions: bindActionCreators (actions, dispatch)  }
 }
 
-const SearchContainer = connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
-export default SearchContainer;

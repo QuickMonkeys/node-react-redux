@@ -2,7 +2,7 @@
 
 ## A simple example to demonstrate the functionality of react.js and redux.
 
-The data is representing by a json file to be used by the component.
+The data is representing by a json file to be used by the components.
 
 The transpiler used to generate javascript is Babel.
 

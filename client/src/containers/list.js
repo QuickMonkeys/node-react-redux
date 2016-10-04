@@ -16,6 +16,4 @@ const mapDispatchToProps = (dispatch) => {
     return { actions: bindActionCreators (actions, dispatch)  }
 }
 
-const ListContainer = connect(mapStateToProps, mapDispatchToProps)(List);
-
-export default ListContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(List);
