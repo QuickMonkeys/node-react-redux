@@ -29,7 +29,7 @@ export default class List extends React.Component {
 
         let filtered = filter == undefined ? data : data.filter((f) => f.language.toUpperCase().indexOf(filter) != -1);
         const result = filtered.map((item) => <tr className={rowClass(item.position)} data-position={item.position} key={item.position}>
-                                                <td>{item.position}</td><td>{item.language}</td><td>{item.rating}</td>
+                                                <td>{item.position}</td><td>{item.language}</td><td>{item.rating.toFixed(2)}</td>
                                               </tr>);
         
         const table = <div style={{height: '186px', overflowY: 'scroll' }}>

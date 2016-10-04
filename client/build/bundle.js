@@ -34479,7 +34479,7 @@
 	
 	var _reducer2 = _interopRequireDefault(_reducer);
 	
-	var _pie = __webpack_require__(457);
+	var _pie = __webpack_require__(296);
 	
 	var _pie2 = _interopRequireDefault(_pie);
 	
@@ -34487,11 +34487,11 @@
 	
 	var _bar2 = _interopRequireDefault(_bar);
 	
-	var _search = __webpack_require__(454);
+	var _search = __webpack_require__(450);
 	
 	var _search2 = _interopRequireDefault(_search);
 	
-	var _list = __webpack_require__(450);
+	var _list = __webpack_require__(453);
 	
 	var _list2 = _interopRequireDefault(_list);
 	
@@ -36303,8 +36303,128 @@
 	exports.default = languageReducer;
 
 /***/ },
-/* 296 */,
-/* 297 */,
+/* 296 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _redux = __webpack_require__(268);
+	
+	var _reactRedux = __webpack_require__(282);
+	
+	var _pie = __webpack_require__(297);
+	
+	var _pie2 = _interopRequireDefault(_pie);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var mapStateToProps = function mapStateToProps(state, ownProps) {
+	    return {
+	        data: state.top5
+	    };
+	};
+	
+	var PieChartChartContainer = (0, _reactRedux.connect)(mapStateToProps)(_pie2.default);
+	
+	exports.default = PieChartChartContainer;
+
+/***/ },
+/* 297 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(71);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _chart = __webpack_require__(298);
+	
+	var _chart2 = _interopRequireDefault(_chart);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var PieChart = function (_React$Component) {
+	    _inherits(PieChart, _React$Component);
+	
+	    function PieChart() {
+	        _classCallCheck(this, PieChart);
+	
+	        return _possibleConstructorReturn(this, (PieChart.__proto__ || Object.getPrototypeOf(PieChart)).apply(this, arguments));
+	    }
+	
+	    _createClass(PieChart, [{
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate(prevProps, prevState) {
+	            console.log('PieChart - componentDidUpdate');
+	
+	            var data = this.props.data;
+	
+	
+	            var ctx = document.getElementById("pieContent");
+	
+	            var dataD = {
+	                labels: data.map(function (m) {
+	                    return m.position + ' - ' + m.language;
+	                }),
+	                datasets: [{
+	                    data: data.map(function (m) {
+	                        return m.rating.toFixed(2);
+	                    }),
+	                    backgroundColor: ["#6F1D1B", "#BB9457", "#432818", "#99582A", "#FFE6A7"]
+	                }]
+	            };
+	
+	            _chart2.default.defaults.global.legend.display = false;
+	            var myChart = new _chart2.default(ctx, {
+	                type: 'pie',
+	                data: dataD,
+	                options: { borderColor: '#55C9A6' }
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'col-md-6' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'card card-graph' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'title' },
+	                        'Top 5 programming languages'
+	                    ),
+	                    _react2.default.createElement('hr', null),
+	                    _react2.default.createElement('canvas', { id: 'pieContent', width: '100%', height: '55' })
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return PieChart;
+	}(_react2.default.Component);
+	
+	exports.default = PieChart;
+
+/***/ },
 /* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -61620,7 +61740,7 @@
 	
 	            $('#barContainer').html('');
 	
-	            marked.length == 0 ? $('#barContainer').append('<div id="barContent" width="100%" height="55">No programming languages selected.</div>') : this.createChart(data, marked);
+	            marked.length == 0 ? $('#barContainer').append('<div id="barContent" width="100%" height="55">No programming language selected.</div>') : this.createChart(data, marked);
 	        }
 	    }, {
 	        key: 'render',
@@ -61670,11 +61790,167 @@
 	
 	var _reactRedux = __webpack_require__(282);
 	
-	var _list = __webpack_require__(451);
+	var _search = __webpack_require__(451);
+	
+	var actions = _interopRequireWildcard(_search);
+	
+	var _search2 = __webpack_require__(452);
+	
+	var _search3 = _interopRequireDefault(_search2);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	var mapStateToProps = function mapStateToProps(state, ownProps) {
+	    return {
+	        data: state.languages,
+	        filter: state.filter,
+	        marked: state.marked
+	    };
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	    return { actions: (0, _redux.bindActionCreators)(actions, dispatch) };
+	};
+	
+	var SearchContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_search3.default);
+	
+	exports.default = SearchContainer;
+
+/***/ },
+/* 451 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.filter = filter;
+	exports.clearMarked = clearMarked;
+	function filter(action) {
+	    return { type: 'FILTER', value: action.value };
+	}
+	
+	function clearMarked(action) {
+	    return { type: 'CLEAR_MARKED' };
+	}
+
+/***/ },
+/* 452 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(71);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Search = function (_React$Component) {
+	    _inherits(Search, _React$Component);
+	
+	    function Search() {
+	        _classCallCheck(this, Search);
+	
+	        return _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).apply(this, arguments));
+	    }
+	
+	    _createClass(Search, [{
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate(prevProps, prevState) {
+	            console.log('Search - componentDidUpdate');
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+	
+	            var _props = this.props;
+	            var data = _props.data;
+	            var filter = _props.filter;
+	            var marked = _props.marked;
+	
+	            var filtered = filter == undefined ? data.length : data.filter(function (f) {
+	                return f.language.toUpperCase().indexOf(filter) != -1;
+	            }).length;
+	            return _react2.default.createElement(
+	                'div',
+	                { style: { margin: '4px' } },
+	                _react2.default.createElement('input', {
+	                    type: 'text',
+	                    placeholder: 'Search for a programming language...',
+	                    onChange: function onChange(e) {
+	                        return _this2.props.actions.filter({ value: e.target.value });
+	                    },
+	                    className: 'form-control'
+	                }),
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement(
+	                        'span',
+	                        null,
+	                        'Total: ',
+	                        filtered,
+	                        ' of ',
+	                        data.length,
+	                        ' - ',
+	                        marked.length,
+	                        ' selected. ',
+	                        _react2.default.createElement(
+	                            'a',
+	                            { href: 'javascript:void(0)',
+	                                style: { display: marked.length == 0 ? 'none' : 'inline' },
+	                                onClick: function onClick() {
+	                                    return _this2.props.actions.clearMarked();
+	                                } },
+	                            'Clear all selected'
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return Search;
+	}(_react2.default.Component);
+	
+	exports.default = Search;
+
+/***/ },
+/* 453 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _redux = __webpack_require__(268);
+	
+	var _reactRedux = __webpack_require__(282);
+	
+	var _list = __webpack_require__(454);
 	
 	var actions = _interopRequireWildcard(_list);
 	
-	var _list2 = __webpack_require__(452);
+	var _list2 = __webpack_require__(455);
 	
 	var _list3 = _interopRequireDefault(_list2);
 	
@@ -61699,7 +61975,7 @@
 	exports.default = ListContainer;
 
 /***/ },
-/* 451 */
+/* 454 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -61728,7 +62004,7 @@
 	}
 
 /***/ },
-/* 452 */
+/* 455 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
@@ -61780,7 +62056,7 @@
 	            console.log('List - componentDidMount');
 	
 	            // An ajax can be used here to access the data, by a rest API service
-	            var languages = __webpack_require__(453);
+	            var languages = __webpack_require__(456);
 	            this.props.actions.populate({ type: "POPULATE", value: languages });
 	        }
 	    }, {
@@ -61816,7 +62092,7 @@
 	                    _react2.default.createElement(
 	                        'td',
 	                        null,
-	                        item.rating
+	                        item.rating.toFixed(2)
 	                    )
 	                );
 	            });
@@ -61879,7 +62155,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(70)))
 
 /***/ },
-/* 453 */
+/* 456 */
 /***/ function(module, exports) {
 
 	module.exports = [
@@ -62134,284 +62410,6 @@
 			"rating": 0.166
 		}
 	];
-
-/***/ },
-/* 454 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _redux = __webpack_require__(268);
-	
-	var _reactRedux = __webpack_require__(282);
-	
-	var _search = __webpack_require__(455);
-	
-	var actions = _interopRequireWildcard(_search);
-	
-	var _search2 = __webpack_require__(456);
-	
-	var _search3 = _interopRequireDefault(_search2);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	var mapStateToProps = function mapStateToProps(state, ownProps) {
-	    return {
-	        data: state.languages,
-	        filter: state.filter,
-	        marked: state.marked
-	    };
-	};
-	
-	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-	    return { actions: (0, _redux.bindActionCreators)(actions, dispatch) };
-	};
-	
-	var SearchContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_search3.default);
-	
-	exports.default = SearchContainer;
-
-/***/ },
-/* 455 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.filter = filter;
-	exports.clearMarked = clearMarked;
-	function filter(action) {
-	    return { type: 'FILTER', value: action.value };
-	}
-	
-	function clearMarked(action) {
-	    return { type: 'CLEAR_MARKED' };
-	}
-
-/***/ },
-/* 456 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(71);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Search = function (_React$Component) {
-	    _inherits(Search, _React$Component);
-	
-	    function Search() {
-	        _classCallCheck(this, Search);
-	
-	        return _possibleConstructorReturn(this, (Search.__proto__ || Object.getPrototypeOf(Search)).apply(this, arguments));
-	    }
-	
-	    _createClass(Search, [{
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate(prevProps, prevState) {
-	            console.log('Search - componentDidUpdate');
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _this2 = this;
-	
-	            var _props = this.props;
-	            var data = _props.data;
-	            var filter = _props.filter;
-	            var marked = _props.marked;
-	
-	            var filtered = filter == undefined ? data.length : data.filter(function (f) {
-	                return f.language.toUpperCase().indexOf(filter) != -1;
-	            }).length;
-	            return _react2.default.createElement(
-	                'div',
-	                { style: { margin: '4px' } },
-	                _react2.default.createElement('input', {
-	                    type: 'text',
-	                    placeholder: 'Search for a programming language...',
-	                    onChange: function onChange(e) {
-	                        return _this2.props.actions.filter({ value: e.target.value });
-	                    },
-	                    className: 'form-control'
-	                }),
-	                _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    _react2.default.createElement(
-	                        'span',
-	                        null,
-	                        'Total: ',
-	                        filtered,
-	                        ' of ',
-	                        data.length,
-	                        ' - ',
-	                        marked.length,
-	                        ' selected. ',
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: 'javascript:void(0)',
-	                                style: { display: marked.length == 0 ? 'none' : 'inline' },
-	                                onClick: function onClick() {
-	                                    return _this2.props.actions.clearMarked();
-	                                } },
-	                            'Clear all selected'
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return Search;
-	}(_react2.default.Component);
-	
-	exports.default = Search;
-
-/***/ },
-/* 457 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _redux = __webpack_require__(268);
-	
-	var _reactRedux = __webpack_require__(282);
-	
-	var _pie = __webpack_require__(458);
-	
-	var _pie2 = _interopRequireDefault(_pie);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var mapStateToProps = function mapStateToProps(state, ownProps) {
-	    return {
-	        data: state.top5
-	    };
-	};
-	
-	var PieChartChartContainer = (0, _reactRedux.connect)(mapStateToProps)(_pie2.default);
-	
-	exports.default = PieChartChartContainer;
-
-/***/ },
-/* 458 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(71);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _chart = __webpack_require__(298);
-	
-	var _chart2 = _interopRequireDefault(_chart);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var PieChart = function (_React$Component) {
-	    _inherits(PieChart, _React$Component);
-	
-	    function PieChart() {
-	        _classCallCheck(this, PieChart);
-	
-	        return _possibleConstructorReturn(this, (PieChart.__proto__ || Object.getPrototypeOf(PieChart)).apply(this, arguments));
-	    }
-	
-	    _createClass(PieChart, [{
-	        key: 'componentDidUpdate',
-	        value: function componentDidUpdate(prevProps, prevState) {
-	            console.log('PieChart - componentDidUpdate');
-	
-	            var data = this.props.data;
-	
-	
-	            var ctx = document.getElementById("pieContent");
-	
-	            var dataD = {
-	                labels: data.map(function (m) {
-	                    return m.position + ' - ' + m.language;
-	                }),
-	                datasets: [{
-	                    data: data.map(function (m) {
-	                        return m.rating.toFixed(2);
-	                    }),
-	                    backgroundColor: ["#6F1D1B", "#BB9457", "#432818", "#99582A", "#FFE6A7"]
-	                }]
-	            };
-	
-	            _chart2.default.defaults.global.legend.display = false;
-	            var myChart = new _chart2.default(ctx, {
-	                type: 'pie',
-	                data: dataD,
-	                options: { borderColor: '#55C9A6' }
-	            });
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'col-md-6' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'card card-graph' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'title' },
-	                        'Top 5 programming languages'
-	                    ),
-	                    _react2.default.createElement('hr', null),
-	                    _react2.default.createElement('canvas', { id: 'pieContent', width: '100%', height: '55' })
-	                )
-	            );
-	        }
-	    }]);
-	
-	    return PieChart;
-	}(_react2.default.Component);
-	
-	exports.default = PieChart;
 
 /***/ }
 /******/ ]);

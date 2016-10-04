@@ -55,7 +55,7 @@ export default class BarChart extends React.Component {
         $('#barContainer').html('');
         
         marked.length == 0
-            ? $('#barContainer').append('<div id="barContent" width="100%" height="55">No programming languages selected.</div>')
+            ? $('#barContainer').append('<div id="barContent" width="100%" height="55">No programming language selected.</div>')
             : this.createChart(data, marked);
 
     }
