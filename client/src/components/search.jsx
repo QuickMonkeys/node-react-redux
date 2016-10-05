@@ -7,8 +7,8 @@ export default class Search extends React.Component {
     }
 
     render() {
-        let {data, filter, marked} = this.props;
-        let {actions} = this.props;
+        let {data, filter, marked, actions} = this.props;
+        
         const filtered = filter == undefined
                         ? data.length
                         : data.filter((f) => f.language.toUpperCase().indexOf(filter) != -1).length;
