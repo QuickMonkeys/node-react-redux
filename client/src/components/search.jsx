@@ -17,7 +17,7 @@ export default class Search extends React.Component {
                 <input 
                     type="text" 
                     placeholder="Search for a programming language..."
-                    onChange={(e) => actions.filter({value: e.target.value})}
+                    onChange={(e) => actions.filter(e.target.value)}
                     className="form-control"
                 />
                 <div>

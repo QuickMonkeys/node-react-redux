@@ -9,7 +9,7 @@ export default class List extends React.Component {
         
         $('[data-position]').off('click').on('click', function() {
             console.log(($(this)).data('position'));
-            mark({value: ($(this)).data('position')});
+            mark(($(this)).data('position'));
         });
     }
 
@@ -18,7 +18,7 @@ export default class List extends React.Component {
 
         // An ajax call can be used here to access the data
         const languages = require("json!../data/languages.json");
-        this.props.actions.populate({ value: languages });
+        this.props.actions.populate(languages);
     }
     
     // This function generates the rows of the languages

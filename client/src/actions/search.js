@@ -1,7 +1,7 @@
-export function filter(action) {
-    return { type: 'FILTER', value: action.value };
+export function filter(value) {
+    return { type: 'FILTER', value: value };
 }
 
-export function clearMarked(action) {
+export function clearMarked() {
     return { type: 'CLEAR_MARKED' };
 }

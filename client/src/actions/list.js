@@ -1,11 +1,7 @@
-export function populate(action) {
-    return { type: 'POPULATE', value: action.value };
+export function populate(value) {
+    return { type: 'POPULATE', value: value };
 }
 
-export function filter(action) {
-    return { type: 'FILTER', value: action.value };
-}
-
-export function mark(action) {
-    return { type: 'MARK', value: action.value };
+export function mark(value) {
+    return { type: 'MARK', value: value };
 }
