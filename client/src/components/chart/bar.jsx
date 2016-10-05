@@ -24,8 +24,14 @@ export default class BarChart extends React.Component {
                 }]
         };
         
+        const options = {
+            scales: {
+              xAxes:[{ gridLines:{ color:"rgba(255,255,255,0.5)", zeroLineColor:"rgba(255,255,255,0.5)" } }],
+              yAxes:[{ gridLines:{ color:"rgba(255,255,255,0.5)" } }] 
+            }};
+        
         Chart.defaults.global.legend.display = false;
-        let bar = new Chart(ctx, { type: 'bar', data: dataChart });
+        let bar = new Chart(ctx, { type: 'bar', data: dataChart, options: options });
     }
     
     componentDidUpdate(prevProps, prevState){

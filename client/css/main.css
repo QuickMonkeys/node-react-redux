@@ -11,20 +11,20 @@
 }
 
 .card-graph {
-    background-color: #55C9A6;
+    background-color: #282828;
 }
 
 .card-list {
-    background-color: #D67F6B;
+    background-color: #282828;
 }
 
 .card-container {
-    background-color: #89949B;
+    background-color: #000;
 }
 
 
 .marked {
-    background-color: #EBA068;
+    background-color: #505050;
 }
 
 .card hr {
@@ -44,6 +44,6 @@
 
 .table-row:hover {
     cursor:pointer;
-    background-color: #E0E0E0;
+    background-color: #606060;
 }
     
